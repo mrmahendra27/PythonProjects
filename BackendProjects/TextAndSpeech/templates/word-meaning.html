@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate <strong>(Meaning/Antonym/Synonym)</strong> of a word</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body>
+    <h1>Generate <strong>Meaning/Antonym/Synonym</strong> of a word</h1>
+
+    <div class="mb-3">
+        <form action="" method="post">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                {{ form }}
+            </div>
+
+            <button type="submit" class="btn btn-dark">Generate Output</button>
+        </form>
+    </div>
+
+
+    {% if data is not None %}
+    <div class="card">
+        <h1>The <strong>Meaning/Antonym/Synonym</strong> Of Word <b>{{ word }}</b> is: </h1>
+        <p>
+        <ul>
+            <li><b>Meaning:</b>
+                {% if "Noun" in data.meaning %}
+                <ul>
+                    <b>Noun:</b>
+                    {% for noun in data.meaning.Noun %}
+                    <li>{{ noun }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+
+                {% if "Verb" in data.meaning %}
+                <ul>
+                    <b>Verb:</b>
+                    {% for verb in data.meaning.Verb %}
+                    <li>{{ verb }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+
+                {% if "Adjective" in data.meaning %}
+                <ul>
+                    <b>Adjective:</b>
+                    {% for adjective in data.meaning.Adjective %}
+                    <li>{{ adjective }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </li>
+            <li><b>Antonym:</b> {{ data.antonym }}</li>
+            <li><b>Synonym:</b> {{ data.synonym }}</li>
+        </ul>
+        </p>
+    </div>
+    {% endif %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
