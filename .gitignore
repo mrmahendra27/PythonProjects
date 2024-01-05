@@ -10,6 +10,7 @@
 *.json
 *.csv
 *.db
+*.log
 pyvenv.cfg
 
 /bin
