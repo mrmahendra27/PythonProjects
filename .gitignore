@@ -1,3 +1,17 @@
 /venv
 *.pdf
 *.mp3
+
+**/Scripts/*
+**/Lib/*
+**/Include/*
+**/__pycache__/*
+
+*.json
+*.csv
+*.db
+pyvenv.cfg
+
+/bin
+/lib
+/lib64

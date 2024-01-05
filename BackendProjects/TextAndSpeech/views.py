@@ -12,7 +12,7 @@ from PyDictionary import PyDictionary
 
 from PyPDF2 import PdfReader
 
-from .forms import TextToSpeechForm, WordMeaningForm, PDFToSpeechForm
+from .forms import TextToSpeechForm, WordMeaningForm, PDFToSpeechForm, SpeechToTextForm
 
 
 # Create your views here.
@@ -145,3 +145,7 @@ def convert_pdf_to_speech(request):
         form = PDFToSpeechForm()
 
     return render(request, "convert-pdf-to-speech.html", {"form": form})
+
+def speech_to_text(request):
+    form = SpeechToTextForm
+    return render(request, "speech-to-text.html", {"form": form})

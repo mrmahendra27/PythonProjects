@@ -44,3 +44,14 @@ class PDFToSpeechForm(forms.Form):
             FileExtensionValidator(allowed_extensions=["pdf"]),
         ],
     )
+
+class SpeechToTextForm(forms.Form):
+    audio = forms.FileField(
+        widget=forms.FileInput(attrs={"class": "form-control"}),
+        label="Select Audio File",
+        required=True,
+        help_text="File must be in Audio format.",
+        # validators=[
+        #     FileExtensionValidator(allowed_extensions=["pdf"]),
+        # ],
+    )
